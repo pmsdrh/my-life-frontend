@@ -12,6 +12,7 @@ import ProjectCreate from "./project-create";
 import ProjectDelete from "./project-delete";
 import ProjectEdit from "./project-edit";
 import { EyeIcon } from "../icons";
+import { Link } from "react-router-dom";
 
 export const columns = [
     { name: "#", uid: "id" },
@@ -29,9 +30,11 @@ const ProjectTable: React.FC<{ projects: IUseProject }> = ({ projects }) => {
                 return (
                     <div className="relative flex items-center gap-2">
                         <Tooltip content="مشاهده">
-                            <span className="text-lg text-default-400 cursor-pointer active:opacity-50">
-                                <EyeIcon />
-                            </span>
+                            <Link to={'/project/' + project.id as string}>
+                                <span className="text-lg text-default-400 cursor-pointer active:opacity-50">
+                                    <EyeIcon />
+                                </span>
+                            </Link>
                         </Tooltip>
                         <ProjectEdit editProject={projects.editProject} index={project.id} />
                         <ProjectDelete deleteProject={projects.deleteProject} index={project.id} />

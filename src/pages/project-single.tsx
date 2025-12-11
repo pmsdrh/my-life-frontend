@@ -2,7 +2,7 @@ import useProject from "@/hooks/useProject";
 import DefaultLayout from "@/layouts/default";
 import { useParams } from "react-router-dom";
 
-const ProjectPage = () => {
+const SingleProjectPage = () => {
     const { id } = useParams();
     const project = useProject(id as string);
 
@@ -15,4 +15,4 @@ const ProjectPage = () => {
     )
 }
 
-export default ProjectPage;
+export default SingleProjectPage;
