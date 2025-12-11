@@ -11,8 +11,10 @@ async function getProjectApi(id: number | string): Promise<IProject> {
     return res.json();
 }
 async function createProjectApi(data: IProject): Promise<IProject> {
-    const res = await fetch(BASE_URL + '/create', {
+    alert(JSON.stringify(data))
+    const res = await fetch(BASE_URL + 'create', {
         method: 'put',
+        headers: { "Content-Type": "application/json" },
         body: JSON.stringify(data),
     })
     if (!res.ok) throw new Error("Faild to create Projects");
@@ -21,6 +23,7 @@ async function createProjectApi(data: IProject): Promise<IProject> {
 async function deleteProjectApi(data: IProject): Promise<IProject> {
     const res = await fetch(BASE_URL + data.id as string, {
         method: 'delete',
+        headers: { "Content-Type": "application/json" },
         body: JSON.stringify(data),
     })
     if (!res.ok) throw new Error("Faild to delete Projects");
@@ -29,6 +32,7 @@ async function deleteProjectApi(data: IProject): Promise<IProject> {
 async function editProjectApi(data: IProject): Promise<IProject> {
     const res = await fetch(BASE_URL + data.id as string + '/edit', {
         method: 'post',
+        headers: { "Content-Type": "application/json" },
         body: JSON.stringify(data),
     })
     if (!res.ok) throw new Error("Faild to delete Projects");
