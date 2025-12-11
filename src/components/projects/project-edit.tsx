@@ -1,4 +1,4 @@
-import { Button, ButtonGroup, Input, Popover, PopoverContent, PopoverTrigger, Tooltip } from "@heroui/react"
+import { Button, ButtonGroup, Input, Popover, PopoverContent, PopoverTrigger } from "@heroui/react"
 import { EditIcon } from "../icons"
 import { useRef } from "react";
 
