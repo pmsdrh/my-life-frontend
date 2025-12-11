@@ -11,7 +11,6 @@ async function getProjectApi(id: number | string): Promise<IProject> {
     return res.json();
 }
 async function createProjectApi(data: IProject): Promise<IProject> {
-    alert(JSON.stringify(data))
     const res = await fetch(BASE_URL + 'create', {
         method: 'put',
         headers: { "Content-Type": "application/json" },
