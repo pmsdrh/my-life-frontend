@@ -1,4 +1,4 @@
-import { createProjectApi, getProjectsApi, deleteProjectApi, editProjectApi, getProjectApi } from "@/api/projects";
+import { createProjectApi, getProjectsApi, deleteProjectApi, editProjectApi } from "@/api/projects";
 import { useEffect, useState } from "react";
 
 
@@ -43,8 +43,6 @@ export default function useProjects() {
 
     }
 
-    const getProject = getProjectApi;
-
     useEffect(() => {
         getProjects();
     }, [])
@@ -58,7 +56,6 @@ export default function useProjects() {
         createProject,
         deleteProject,
         editProject,
-        getProject
     }
     return call
 }
