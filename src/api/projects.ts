@@ -23,8 +23,6 @@ async function createProjectApi(data: IProject): Promise<IProject> {
 async function deleteProjectApi(data: IProject): Promise<IProject> {
     const res = await fetch(BASE_URL + data.id as string, {
         method: 'delete',
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify(data),
     })
     if (!res.ok) throw new Error("Faild to delete Projects");
     return res.json();
