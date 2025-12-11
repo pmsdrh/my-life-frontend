@@ -1,6 +1,7 @@
 import { createProjectApi, getProjectsApi, deleteProjectApi, editProjectApi, getProjectApi } from "@/api/projects";
 import { useEffect, useState } from "react";
 
+
 export default function useProjects() {
     const [projects, setProjects] = useState<IProject[]>([]);
     const [loading, setLoading] = useState<boolean>(false);
@@ -48,7 +49,7 @@ export default function useProjects() {
         getProjects();
     }, [])
 
-    return {
+    const call: IUseProject = {
         projects,
         loading,
         error,
@@ -59,4 +60,5 @@ export default function useProjects() {
         editProject,
         getProject
     }
+    return call
 }
