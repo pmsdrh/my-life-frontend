@@ -21,7 +21,7 @@ export const columns = [
     { name: "عملیات", uid: "actions" },
 ];
 
-const ProjectTable: React.FC<{ projects: IUseProject }> = ({ projects }) => {
+const ProjectTable: React.FC<{ projects: IUseProjects }> = ({ projects }) => {
     const renderCell = React.useCallback((project: any, columnKey: React.Key) => {
         const cellValue = project[columnKey as number];
 
@@ -44,8 +44,8 @@ const ProjectTable: React.FC<{ projects: IUseProject }> = ({ projects }) => {
                 return cellValue;
         }
     }, []);
-
     return (
+
         <Table aria-label="لیست پروژه ها" topContent={
             <div>
                 <ProjectCreate newProject={projects.createProject} />

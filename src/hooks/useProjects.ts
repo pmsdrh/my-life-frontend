@@ -47,7 +47,7 @@ export default function useProjects() {
         getProjects();
     }, [])
 
-    const call: IUseProject = {
+    const call: IUseProjects = {
         projects,
         loading,
         error,
