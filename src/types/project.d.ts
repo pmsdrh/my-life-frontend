@@ -4,7 +4,7 @@ interface IProject {
     createdAt?: string;
 }
 
-interface IUseProject {
+interface IUseProjects {
     projects: IProject[];
     loading: boolean;
     error: string | null;
@@ -13,4 +13,12 @@ interface IUseProject {
     createProject: (data: IProject) => void;
     deleteProject: (data: IProject) => void;
     editProject: (data: IProject) => void;
+}
+
+
+interface IUseProject {
+    project: IProject;
+    loading: boolean;
+    error: string | null;
+    getProject: () => void;
 }

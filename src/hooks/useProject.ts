@@ -1,7 +1,7 @@
 import { getProjectApi } from "@/api/projects";
 import { useEffect, useState } from "react"
 
-const useProject: (id: number | string) => any = (id) => {
+const useProject: (id: number | string) => IUseProject = (id) => {
     const [project, setProject] = useState<IProject>({})
     const [loading, setLoading] = useState<boolean>(false)
     const [error, setError] = useState<string | null>(null);
