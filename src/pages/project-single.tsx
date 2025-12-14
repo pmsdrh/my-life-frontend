@@ -1,5 +1,4 @@
 import useProject from "@/hooks/useProject";
-import DefaultLayout from "@/layouts/default";
 import { useParams } from "react-router-dom";
 
 const SingleProjectPage = () => {
@@ -8,10 +7,9 @@ const SingleProjectPage = () => {
 
 
     return (
-
-        <DefaultLayout>
+        <>
             {JSON.stringify(project)}
-        </DefaultLayout>
+        </>
     )
 }
 
