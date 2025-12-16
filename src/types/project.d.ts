@@ -2,6 +2,7 @@ interface IProject {
     id?: number;
     name?: string;
     createdAt?: string;
+    GroupTasks?: IGroupTask[];
 }
 
 interface IUseProjects {
@@ -21,4 +22,5 @@ interface IUseProject {
     loading: boolean;
     error: string | null;
     getProject: () => void;
+    addGroup: (name: string) => void;
 }

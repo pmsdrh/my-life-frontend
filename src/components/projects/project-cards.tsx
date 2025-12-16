@@ -6,12 +6,14 @@ const ProjectCards: React.FC<{ project: IUseProject }> = ({ project }) => {
 
     return (
         <div className="gap-2 grid grid-cols-2 sm:grid-cols-4">
-            <TaskGroup />
-            <TaskGroup />
-            <TaskGroup />
-            <TaskGroup />
-            <TaskGroup />
-            <Button className="w-full h-full bg-transparent border-dashed border-2 border-gray-400"><PlusIcon /></Button>
+            {project.project.GroupTasks?.map(item => (
+                <TaskGroup taskgroup={item} />
+            ))}
+            <Button
+                onClick={() => project.addGroup('بدون عنوان')}
+                className="w-full h-full bg-transparent border-dashed border-2 border-gray-400">
+                <PlusIcon />
+            </Button>
         </div>
     );
 }

@@ -1,9 +1,11 @@
 import { Checkbox } from "@heroui/react";
 
-export default function Task() {
+const Task: React.FC<{ task: ITask }> = ({ task }) => {
     return (
         <Checkbox defaultSelected lineThrough>
-            Option
+            {task.name}
         </Checkbox>
     );
 }
+
+export default Task;

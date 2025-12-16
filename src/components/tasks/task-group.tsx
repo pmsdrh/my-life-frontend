@@ -3,15 +3,15 @@ import { CheckboxGroup, Checkbox } from "@heroui/react";
 import Task from "./task";
 import { PlusIcon } from "../icons";
 
-const TaskGroup: React.FC = () => {
+const TaskGroup: React.FC<{ taskgroup: IGroupTask }> = ({ taskgroup }) => {
 
 
     const TaskRender = () => {
         return (
             <CheckboxGroup defaultValue={[]} >
-                <Task />
-                <Task />
-                <Task />
+                {taskgroup.Tasks.map(item => (
+                    <Task task={item} />
+                ))}
             </CheckboxGroup>
         );
     }
@@ -19,7 +19,7 @@ const TaskGroup: React.FC = () => {
     return (
         <Card className="max-w-[350px]">
             <CardHeader className="flex gap-3">
-                <Checkbox className="font-extrabold text-3xl" value="buenos-aires">Buenos Aires</Checkbox>
+                <Checkbox className="font-extrabold text-3xl" value="buenos-aires">{taskgroup.name}</Checkbox>
             </CardHeader>
             <Divider />
             <CardBody>
