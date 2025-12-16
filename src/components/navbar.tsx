@@ -20,6 +20,7 @@ import {
   SearchIcon,
 } from "@/components/icons";
 import { useEffect, useRef } from "react";
+import BackButton from "./back-button";
 
 export const Navbar = () => {
   const inputRef = useRef<HTMLInputElement | null>(null);
@@ -100,6 +101,7 @@ export const Navbar = () => {
           <ThemeSwitch />
         </NavbarItem>
         <NavbarItem className="hidden lg:flex">{searchInput}</NavbarItem>
+        <BackButton />
         {/* <NavbarItem className="hidden md:flex">
           <Button
             isExternal
@@ -120,6 +122,7 @@ export const Navbar = () => {
         </Link>
         <ThemeSwitch />
         <NavbarMenuToggle />
+        <BackButton />
       </NavbarContent>
 
       <NavbarMenu>
