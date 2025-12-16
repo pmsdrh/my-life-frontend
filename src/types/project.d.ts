@@ -16,11 +16,12 @@ interface IUseProjects {
     editProject: (data: IProject) => void;
 }
 
-
+type TAddTask = (gid: number | string, name: string) => void;
 interface IUseProject {
     project: IProject;
     loading: boolean;
     error: string | null;
     getProject: () => void;
     addGroup: (name: string) => void;
+    addTask: TAddTask;
 }

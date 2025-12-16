@@ -3,13 +3,13 @@ import { CheckboxGroup, Checkbox } from "@heroui/react";
 import Task from "./task";
 import { PlusIcon } from "../icons";
 
-const TaskGroup: React.FC<{ taskgroup: IGroupTask }> = ({ taskgroup }) => {
+const TaskGroup: React.FC<{ taskgroup: IGroupTask, addTask: TAddTask }> = ({ taskgroup, addTask }) => {
 
 
     const TaskRender = () => {
         return (
             <CheckboxGroup defaultValue={[]} >
-                {taskgroup.Tasks.map(item => (
+                {taskgroup.Tasks?.map(item => (
                     <Task task={item} />
                 ))}
             </CheckboxGroup>
@@ -27,7 +27,12 @@ const TaskGroup: React.FC<{ taskgroup: IGroupTask }> = ({ taskgroup }) => {
             </CardBody>
             <Divider />
             <CardFooter>
-                <Button className="w-full"><PlusIcon /></Button>
+                <Button
+                    onClick={() => addTask(taskgroup.id as number, 'بدون عنوان')}
+                    className="w-full"
+                >
+                    <PlusIcon />
+                </Button>
             </CardFooter>
         </Card>
     );

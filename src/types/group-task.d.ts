@@ -3,5 +3,5 @@ interface IGroupTask {
     name?: string;
     createdAt?: string;
     ProjectId: string | number;
-    Tasks: ITask[] | [];
+    Tasks?: ITask[] | [];
 }

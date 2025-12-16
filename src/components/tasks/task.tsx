@@ -2,7 +2,7 @@ import { Checkbox } from "@heroui/react";
 
 const Task: React.FC<{ task: ITask }> = ({ task }) => {
     return (
-        <Checkbox defaultSelected lineThrough>
+        <Checkbox value={task.id as string} lineThrough>
             {task.name}
         </Checkbox>
     );
