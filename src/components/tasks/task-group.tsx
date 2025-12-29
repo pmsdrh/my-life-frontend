@@ -1,5 +1,5 @@
 import { Card, CardHeader, CardBody, CardFooter, Divider, Button } from "@heroui/react";
-import { CheckboxGroup, Checkbox } from "@heroui/react";
+import { Checkbox } from "@heroui/react";
 import Task from "./task";
 import { DeleteIcon, EditIcon, PlusIcon } from "../icons";
 
@@ -8,10 +8,6 @@ const TaskGroup: React.FC<{
     project: IUseProject
 }> = ({ taskgroup, project }) => {
 
-
-    const checked = taskgroup.Tasks?.filter((r) => {
-        if (r.checked) return r.id
-    })
     const TaskRender = () => {
         return (
             <div>
@@ -22,11 +18,25 @@ const TaskGroup: React.FC<{
         );
     }
 
+    const isIndeterminate = (taskgroup.Tasks?.some(i => i.checked) &&
+        taskgroup.Tasks.some(i => !i.checked)) ||
+        !taskgroup.Tasks?.length
+
     return (
         <Card className="max-w-[350px]">
             <CardHeader className="flex gap-3 w-full justify-between">
-                <Checkbox className="font-extrabold text-3xl" value="buenos-aires">{taskgroup.name}</Checkbox>
-                <div className=" gap-2 flex">
+                <Checkbox
+                    className="font-extrabold text-3xl"
+                    value={String(taskgroup.id)}
+                    isSelected={taskgroup.Tasks?.every(t => t.checked)}
+                    isIndeterminate={isIndeterminate}
+                    onValueChange={(isSelected) => {
+                        taskgroup.Tasks?.map(t => {
+                            project.checkTask(t.id as string, isSelected)
+                        })
+                    }}
+                >{taskgroup.name}</Checkbox>
+                <div className="gap-2 flex">
                     <span className="text-primary" onClick={() => {
 
                     }}>
