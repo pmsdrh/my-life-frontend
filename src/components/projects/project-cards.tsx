@@ -7,7 +7,7 @@ const ProjectCards: React.FC<{ project: IUseProject }> = ({ project }) => {
     return (
         <div className="gap-2 grid grid-cols-2 sm:grid-cols-4">
             {project.project.GroupTasks?.map(item => (
-                <TaskGroup taskgroup={item} addTask={project.addTask} />
+                <TaskGroup taskgroup={item} addTask={project.addTask} renameTask={project.renameTask} />
             ))}
             <Button
                 onClick={() => project.addGroup('بدون عنوان')}

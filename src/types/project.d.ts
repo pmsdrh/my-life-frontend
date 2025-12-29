@@ -17,6 +17,8 @@ interface IUseProjects {
 }
 
 type TAddTask = (gid: number | string, name: string) => void;
+type TReanemTask = (id: number | string, name: string) => void;
+
 interface IUseProject {
     project: IProject;
     loading: boolean;
@@ -24,4 +26,5 @@ interface IUseProject {
     getProject: () => void;
     addGroup: (name: string) => void;
     addTask: TAddTask;
+    renameTask: TReanemTask;
 }

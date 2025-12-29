@@ -1,5 +1,5 @@
 import { getProjectApi } from "@/api/projects";
-import { createTaskApi } from "@/api/task";
+import { createTaskApi, editTaskApi } from "@/api/task";
 import { createTaskGroupApi } from "@/api/task-groups";
 import { useEffect, useState } from "react"
 
@@ -33,11 +33,20 @@ const useProject: (id: number | string) => IUseProject = (id) => {
 
     }
 
+    const renameTask: TReanemTask = (id, name) => {
+        setLoading(true);
+        editTaskApi({ id, name })
+            .then(getProject)
+            .catch(setError)
+            .finally(() => setLoading(false))
+
+    }
+
     useEffect(() => {
         getProject();
     }, [])
 
-    return { project, loading, error, getProject, addGroup, addTask }
+    return { project, loading, error, getProject, addGroup, addTask, renameTask }
 }
 
 export default useProject;

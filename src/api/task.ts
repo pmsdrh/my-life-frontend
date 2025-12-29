@@ -11,4 +11,16 @@ async function createTaskApi(data: ITask): Promise<ITask> {
     return res.json();
 }
 
-export { createTaskApi }
+async function editTaskApi(data: ITask): Promise<ITask> {
+    const res = await fetch(BASE_URL + `${data.id}/edit`, {
+        method: 'post',
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(data),
+    })
+    if (!res.ok) throw new Error("Faild to edit Task");
+    return res.json();
+}
+
+
+
+export { createTaskApi, editTaskApi }

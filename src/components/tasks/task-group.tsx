@@ -3,14 +3,14 @@ import { CheckboxGroup, Checkbox } from "@heroui/react";
 import Task from "./task";
 import { DeleteIcon, EditIcon, PlusIcon } from "../icons";
 
-const TaskGroup: React.FC<{ taskgroup: IGroupTask, addTask: TAddTask }> = ({ taskgroup, addTask }) => {
+const TaskGroup: React.FC<{ taskgroup: IGroupTask, addTask: TAddTask, renameTask: TReanemTask }> = ({ taskgroup, addTask, renameTask }) => {
 
 
     const TaskRender = () => {
         return (
             <CheckboxGroup defaultValue={[]} >
                 {taskgroup.Tasks?.map(item => (
-                    <Task task={item} />
+                    <Task task={item} renameTask={renameTask} />
                 ))}
             </CheckboxGroup>
         );
