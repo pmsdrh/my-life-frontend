@@ -11,4 +11,12 @@ async function createTaskGroupApi(data: IGroupTask): Promise<IGroupTask> {
     return res.json();
 }
 
-export { createTaskGroupApi }
+async function deleteTaskGroupApi(data: ITask): Promise<ITask> {
+    const res = await fetch(BASE_URL + `${data.id}`, {
+        method: 'delete',
+    })
+    if (!res.ok) throw new Error("Faild to delete Task");
+    return res.json();
+}
+
+export { createTaskGroupApi, deleteTaskGroupApi }

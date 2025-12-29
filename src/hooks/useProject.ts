@@ -1,6 +1,6 @@
 import { getProjectApi } from "@/api/projects";
 import { createTaskApi, deleteTaskApi, editTaskApi } from "@/api/task";
-import { createTaskGroupApi } from "@/api/task-groups";
+import { createTaskGroupApi, deleteTaskGroupApi } from "@/api/task-groups";
 import { useEffect, useState } from "react"
 
 const useProject: (id: number | string) => IUseProject = (id) => {
@@ -24,6 +24,17 @@ const useProject: (id: number | string) => IUseProject = (id) => {
             .finally(() => setLoading(false))
 
     }
+
+    const deleteGroup = (id: number | string) => {
+        setLoading(true);
+        deleteTaskGroupApi({ id })
+            .then(getProject)
+            .catch(setError)
+            .finally(() => setLoading(false))
+
+    }
+
+
     const addTask: TAddTask = (gid, name) => {
         setLoading(true);
         createTaskApi({ GroupTaskId: gid, name })
@@ -72,6 +83,7 @@ const useProject: (id: number | string) => IUseProject = (id) => {
         error,
         getProject,
         addGroup,
+        deleteGroup,
         addTask,
         renameTask,
         checkTask,

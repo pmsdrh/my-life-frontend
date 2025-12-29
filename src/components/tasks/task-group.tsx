@@ -50,7 +50,7 @@ const TaskGroup: React.FC<{
                         </span>
                     </Tooltip>
                     <Tooltip content="حذف">
-                        <span className="text-danger">
+                        <span onClick={() => project.deleteGroup(taskgroup.id as number)} className="text-danger">
                             <DeleteIcon color="danger" />
                         </span>
                     </Tooltip>
