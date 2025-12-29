@@ -7,16 +7,26 @@ async function createTaskGroupApi(data: IGroupTask): Promise<IGroupTask> {
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(data),
     })
-    if (!res.ok) throw new Error("Faild to create Projects");
+    if (!res.ok) throw new Error("Faild to create Group");
     return res.json();
 }
 
-async function deleteTaskGroupApi(data: ITask): Promise<ITask> {
+async function deleteTaskGroupApi(data: IGroupTask): Promise<IGroupTask> {
     const res = await fetch(BASE_URL + `${data.id}`, {
         method: 'delete',
     })
-    if (!res.ok) throw new Error("Faild to delete Task");
+    if (!res.ok) throw new Error("Faild to delete Group");
     return res.json();
 }
 
-export { createTaskGroupApi, deleteTaskGroupApi }
+async function editTaskGroupApi(data: IGroupTask): Promise<IGroupTask> {
+    const res = await fetch(BASE_URL + `${data.id}/edit`, {
+        method: 'post',
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(data),
+    })
+    if (!res.ok) throw new Error("Faild to edit Task");
+    return res.json();
+}
+
+export { createTaskGroupApi, deleteTaskGroupApi, editTaskGroupApi }

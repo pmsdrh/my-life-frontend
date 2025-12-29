@@ -28,6 +28,7 @@ interface IUseProject {
     getProject: () => void;
     addGroup: (name: string) => void;
     deleteGroup: (id: number | string) => void;
+    renameGroup: (id: number | string, name: string) => void;
     addTask: TAddTask;
     renameTask: TReanemTask;
     checkTask: TCheckTask;
