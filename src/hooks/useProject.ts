@@ -42,11 +42,20 @@ const useProject: (id: number | string) => IUseProject = (id) => {
 
     }
 
+    const checkTask: TCheckTask = (id, checked) => {
+        setLoading(true);
+        editTaskApi({ id, checked })
+            .then(getProject)
+            .catch(setError)
+            .finally(() => setLoading(false))
+
+    }
+
     useEffect(() => {
         getProject();
     }, [])
 
-    return { project, loading, error, getProject, addGroup, addTask, renameTask }
+    return { project, loading, error, getProject, addGroup, addTask, renameTask, checkTask }
 }
 
 export default useProject;

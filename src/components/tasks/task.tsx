@@ -2,7 +2,11 @@ import { Checkbox, Input } from "@heroui/react";
 import { DeleteIcon, EditIcon } from "../icons";
 import React, { useRef, useState } from "react";
 
-const Task: React.FC<{ task: ITask, renameTask: TReanemTask }> = ({ task, renameTask }) => {
+const Task: React.FC<{
+    task: ITask,
+    renameTask: TReanemTask,
+    checkTask: TCheckTask
+}> = ({ task, renameTask, checkTask }) => {
     const [isEdit, setIsEdit] = useState<boolean>(false)
     const ref = useRef<HTMLInputElement>(null)
     const onCancle = () => setIsEdit(false);
@@ -11,6 +15,7 @@ const Task: React.FC<{ task: ITask, renameTask: TReanemTask }> = ({ task, rename
         setIsEdit(false);
         renameTask(task.id as string, ref.current?.value as string);
     }
+
 
     const handleKeyDown = (e: React.KeyboardEvent<HTMLInputElement>) => {
         if (e.key === "Enter") {
@@ -29,7 +34,17 @@ const Task: React.FC<{ task: ITask, renameTask: TReanemTask }> = ({ task, rename
                     onBlur={onConfirm}
                     ref={ref} />
             ) : (
-                <Checkbox value={task.id as string} lineThrough>
+                <Checkbox
+                    onValueChange={(select) => {
+                        checkTask(task.id as string, select)
+                    }}
+                    value={task.id as string}
+                    isSelected={task.checked}
+                    defaultSelected={task.checked}
+                    className="mb-1.5"
+                    key={task.id as string}
+                    lineThrough
+                >
                     <span className="wrap-anywhere">{task.name}</span>
                 </Checkbox>
             )
@@ -45,7 +60,7 @@ const Task: React.FC<{ task: ITask, renameTask: TReanemTask }> = ({ task, rename
                 </span>
 
             </div>
-        </span>
+        </span >
     );
 }
 

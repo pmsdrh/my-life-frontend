@@ -3,16 +3,22 @@ import { CheckboxGroup, Checkbox } from "@heroui/react";
 import Task from "./task";
 import { DeleteIcon, EditIcon, PlusIcon } from "../icons";
 
-const TaskGroup: React.FC<{ taskgroup: IGroupTask, addTask: TAddTask, renameTask: TReanemTask }> = ({ taskgroup, addTask, renameTask }) => {
+const TaskGroup: React.FC<{
+    taskgroup: IGroupTask,
+    project: IUseProject
+}> = ({ taskgroup, project }) => {
 
 
+    const checked = taskgroup.Tasks?.filter((r) => {
+        if (r.checked) return r.id
+    })
     const TaskRender = () => {
         return (
-            <CheckboxGroup defaultValue={[]} >
+            <div>
                 {taskgroup.Tasks?.map(item => (
-                    <Task task={item} renameTask={renameTask} />
+                    <Task task={item} renameTask={project.renameTask} checkTask={project.checkTask} />
                 ))}
-            </CheckboxGroup>
+            </div>
         );
     }
 
@@ -39,7 +45,7 @@ const TaskGroup: React.FC<{ taskgroup: IGroupTask, addTask: TAddTask, renameTask
             <Divider />
             <CardFooter>
                 <Button
-                    onClick={() => addTask(taskgroup.id as number, 'بدون عنوان')}
+                    onClick={() => project.addTask(taskgroup.id as number, 'بدون عنوان')}
                     className="w-full"
                 >
                     <PlusIcon />
