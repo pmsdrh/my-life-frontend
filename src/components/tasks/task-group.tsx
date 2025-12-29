@@ -1,4 +1,4 @@
-import { Card, CardHeader, CardBody, CardFooter, Divider, Button } from "@heroui/react";
+import { Card, CardHeader, CardBody, CardFooter, Divider, Button, Tooltip } from "@heroui/react";
 import { Checkbox } from "@heroui/react";
 import Task from "./task";
 import { DeleteIcon, EditIcon, PlusIcon } from "../icons";
@@ -12,7 +12,12 @@ const TaskGroup: React.FC<{
         return (
             <div>
                 {taskgroup.Tasks?.map(item => (
-                    <Task task={item} renameTask={project.renameTask} checkTask={project.checkTask} />
+                    <Task
+                        task={item}
+                        renameTask={project.renameTask}
+                        checkTask={project.checkTask}
+                        deleteTask={project.deleteTask}
+                    />
                 ))}
             </div>
         );
@@ -37,15 +42,18 @@ const TaskGroup: React.FC<{
                     }}
                 >{taskgroup.name}</Checkbox>
                 <div className="gap-2 flex">
-                    <span className="text-primary" onClick={() => {
+                    <Tooltip content="ویرایش">
+                        <span className="text-primary" onClick={() => {
 
-                    }}>
-                        <EditIcon />
-                    </span>
-                    <span className="text-danger">
-                        <DeleteIcon color="danger" />
-                    </span>
-
+                        }}>
+                            <EditIcon />
+                        </span>
+                    </Tooltip>
+                    <Tooltip content="حذف">
+                        <span className="text-danger">
+                            <DeleteIcon color="danger" />
+                        </span>
+                    </Tooltip>
                 </div>
             </CardHeader>
             <Divider />

@@ -19,6 +19,7 @@ interface IUseProjects {
 type TAddTask = (gid: number | string, name: string) => void;
 type TReanemTask = (id: number | string, name: string) => void;
 type TCheckTask = (id: number | string, checked: boolean) => void;
+type TDeleteTask = (id: number | string) => void;
 
 interface IUseProject {
     project: IProject;
@@ -29,4 +30,5 @@ interface IUseProject {
     addTask: TAddTask;
     renameTask: TReanemTask;
     checkTask: TCheckTask;
+    deleteTask: TDeleteTask;
 }

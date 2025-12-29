@@ -1,5 +1,5 @@
 import { getProjectApi } from "@/api/projects";
-import { createTaskApi, editTaskApi } from "@/api/task";
+import { createTaskApi, deleteTaskApi, editTaskApi } from "@/api/task";
 import { createTaskGroupApi } from "@/api/task-groups";
 import { useEffect, useState } from "react"
 
@@ -51,11 +51,32 @@ const useProject: (id: number | string) => IUseProject = (id) => {
 
     }
 
+    const deleteTask: TDeleteTask = (id) => {
+        setLoading(true);
+        deleteTaskApi({ id })
+            .then(getProject)
+            .catch(setError)
+            .finally(() => setLoading(false))
+
+    }
+
+
+
     useEffect(() => {
         getProject();
     }, [])
 
-    return { project, loading, error, getProject, addGroup, addTask, renameTask, checkTask }
+    return {
+        project,
+        loading,
+        error,
+        getProject,
+        addGroup,
+        addTask,
+        renameTask,
+        checkTask,
+        deleteTask
+    }
 }
 
 export default useProject;

@@ -21,6 +21,14 @@ async function editTaskApi(data: ITask): Promise<ITask> {
     return res.json();
 }
 
+async function deleteTaskApi(data: ITask): Promise<ITask> {
+    const res = await fetch(BASE_URL + `${data.id}`, {
+        method: 'delete',
+    })
+    if (!res.ok) throw new Error("Faild to delete Task");
+    return res.json();
+}
 
 
-export { createTaskApi, editTaskApi }
+
+export { createTaskApi, editTaskApi, deleteTaskApi }

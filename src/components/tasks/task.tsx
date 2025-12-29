@@ -1,12 +1,13 @@
-import { Checkbox, Input } from "@heroui/react";
+import { Checkbox, Input, Tooltip } from "@heroui/react";
 import { DeleteIcon, EditIcon } from "../icons";
 import React, { useRef, useState } from "react";
 
 const Task: React.FC<{
     task: ITask,
     renameTask: TReanemTask,
-    checkTask: TCheckTask
-}> = ({ task, renameTask, checkTask }) => {
+    checkTask: TCheckTask,
+    deleteTask: TDeleteTask
+}> = ({ task, renameTask, checkTask, deleteTask }) => {
     const [isEdit, setIsEdit] = useState<boolean>(false)
     const ref = useRef<HTMLInputElement>(null)
     const onCancle = () => setIsEdit(false);
@@ -50,14 +51,18 @@ const Task: React.FC<{
             )
             }
             <div className="flex gap-1 self-center">
-                <span>
-                    <EditIcon className="text-primary cursor-pointer" onClick={() => {
-                        setIsEdit(true);
-                    }} />
-                </span>
-                <span>
-                    <DeleteIcon className="text-danger" />
-                </span>
+                <Tooltip content="ویرایش" >
+                    <span>
+                        <EditIcon className="text-primary cursor-pointer" onClick={() => {
+                            setIsEdit(true);
+                        }} />
+                    </span>
+                </Tooltip>
+                <Tooltip content="حذف">
+                    <span>
+                        <DeleteIcon className="text-danger" onClick={() => deleteTask(task.id as string)} />
+                    </span>
+                </Tooltip>
 
             </div>
         </span >
