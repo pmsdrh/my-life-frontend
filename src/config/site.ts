@@ -8,39 +8,19 @@ export const siteConfig = {
       label: "خانه",
       href: "/",
     },
+    {
+      label: "پروژه ها",
+      href: "/projects",
+    },
   ],
   navMenuItems: [
     {
-      label: "حساب کاربری",
-      href: "/profile",
+      label: "خانه",
+      href: "/",
     },
     {
-      label: "داشبورد",
-      href: "/dashboard",
-    },
-    {
-      label: "Projects",
+      label: "پروژه ها",
       href: "/projects",
-    },
-    {
-      label: "Team",
-      href: "/team",
-    },
-    {
-      label: "Calendar",
-      href: "/calendar",
-    },
-    {
-      label: "Settings",
-      href: "/settings",
-    },
-    {
-      label: "Help & Feedback",
-      href: "/help-feedback",
-    },
-    {
-      label: "Logout",
-      href: "/logout",
     },
   ],
   links: {
